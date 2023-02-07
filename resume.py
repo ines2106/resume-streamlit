@@ -4,7 +4,8 @@ from PIL import Image
 from pathlib import Path
 import pandas as pd
 import plotly.express as px
-
+from wordcloud import WordCloud
+import matplotlib.pyplot as plt
 
 current_dir = Path(__file__).parent if "__file__" in locals() else Path.cwd()
 
@@ -134,10 +135,6 @@ with col2:
     
     space(1)
     
-    st.header('Soft Skills')
-    st.write("Comfortable with agile methodology")
-    st.write("Excellent interpersonal skills (active listening, cultural intelligence, team leadership, empathy...)")
-    st.write("Proficiency in problem-solving")
 
     space(1)
 
@@ -146,3 +143,15 @@ with col2:
     st.write("Participation in the professional integration program for refugees EACH ONE (Support in finding work and housing, sharing cultures)")
     st.write("Midfield player in the Essec Women's Football Team (EFF)")
     st.write("Travels : Norway, Sweden, Denmark, Brazil, Spain, Germany, Slovenia, Hungary... ")
+    sskills=['Agile,Curious,Active_listening,Problem_solver,Analytical_thinking,Empathy,']
+
+    space(1)
+
+    st.header('Soft Skills')
+    wordcloud_ss = WordCloud(background_color='white',max_font_size = 40,).generate(str(sskills))
+    def fig_wd(wordcloud):
+        fig = plt.imshow(wordcloud)
+        fig =plt.axis("off")
+        return fig
+    fig = fig_wd(wordcloud_ss)
+    st.pyplot(fig=plt)

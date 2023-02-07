@@ -5,27 +5,35 @@ from pathlib import Path
 import pandas as pd
 import plotly.express as px
 
-ines_visage = Image.open('/Users/ines/Desktop/CV_STREAM/files/ines_face.jpeg')
-linkedin_logo = Image.open('/Users/ines/Desktop/CV_STREAM/files/linkedin_2.png')
-python_logo = Image.open('/Users/ines/Desktop/CV_STREAM/files/python2.png')
-sql_logo = Image.open('/Users/ines/Desktop/CV_STREAM/files/sql2.png')
-office= Image.open('/Users/ines/Desktop/CV_STREAM/files/office2.jpeg')
-hubspot = Image.open('/Users/ines/Desktop/CV_STREAM/files/hubspot.png')
+
+current_dir = Path(__file__).parent if "__file__" in locals() else Path.cwd()
 
 
 
 
+ines_visage_path = current_dir / "files" / "ines_face.jpeg"
+python_path = current_dir / "files" / "python2.png"
+sql_path = current_dir / "files" / "sql2.png"
 
-st.set_page_config(layout="wide", page_icon='/Users/ines/Desktop/CV_STREAM/files/ines_face.jpeg', page_title="Inès Resume")
+ines_visage = Image.open(ines_visage_path)
+python_logo = Image.open(python_path)
+sql_logo = Image.open(sql_path)
+
+st.set_page_config(layout="wide", page_icon=ines_visage, page_title="Inès Resume")
+
+
+
+css_file=current_dir / "styles" / "main.css"
+with open(css_file) as f:
+   st.markdown("<style>{}</style>".format(f.read()),unsafe_allow_html=True)
+
+
 
 st.sidebar.info(
     """
     If you are looking for a curious and enthusiast data analyst, don't hesitate to 
     [email](mailto:ines.mebarki@essec.edu) me or reach out on [LinkedIn](https://www.linkedin.com/in/inès-mebarki/)""")
 
-css_file="/Users/ines/Desktop/CV_STREAM/styles/main.css"
-with open(css_file) as f:
-   st.markdown("<style>{}</style>".format(f.read()),unsafe_allow_html=True)
 
 
 def space(num_lines=1):
@@ -99,7 +107,10 @@ with col2:
     st.image(ines_visage,width=200)
     st.write('Junior Data Analyst, I am eager to learn and help decision making through the power of analytics !')
     st.write('Expecting graduation from Essec Business School in Oct 2023')
-    with open("/Users/ines/Desktop/CV_STREAM/files/INES MEB RESUME.pdf", "rb") as pdf_file:
+
+
+    cv_pdf = current_dir / "files" / "INES MEB RESUME.pdf"
+    with open(cv_pdf, "rb") as pdf_file:
         PDFbyte = pdf_file.read()
     st.download_button(label="Download my resume :rocket:",
                     data=PDFbyte,

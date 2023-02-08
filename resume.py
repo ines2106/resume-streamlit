@@ -4,8 +4,7 @@ from PIL import Image
 from pathlib import Path
 import pandas as pd
 import plotly.express as px
-from wordcloud import WordCloud
-import matplotlib.pyplot as plt
+
 
 current_dir = Path(__file__).parent if "__file__" in locals() else Path.cwd()
 
@@ -48,7 +47,7 @@ col1,col2 = st.columns(2,gap="small")
 with col1:
     st.title('Mebarki Inès')
     st.write(':e-mail:','ines.mebarki@essec.edu')
-    st.write(':phone: ',' +33 7 50 08 49 36')
+    st.write(':phone: ',' +33 7 60 08 49 36')
 
     social_media={'LinkedIn':'www.linkedin.com/in/inès-mebarki'}
     for key,value in social_media.items():
@@ -135,6 +134,10 @@ with col2:
     
     space(1)
     
+    st.header('Soft Skills')
+    st.write("Comfortable with agile methodology")
+    st.write("Excellent interpersonal skills (active listening, cultural intelligence, team leadership, empathy...)")
+    st.write("Proficiency in problem-solving")
 
     space(1)
 
@@ -145,13 +148,4 @@ with col2:
     st.write("Travels : Norway, Sweden, Denmark, Brazil, Spain, Germany, Slovenia, Hungary... ")
     sskills=['Agile,Curious,Active_listening,Problem_solver,Analytical_thinking,Empathy,']
 
-    space(1)
 
-    st.header('Soft Skills')
-    wordcloud_ss = WordCloud(background_color='white',max_font_size = 40,).generate(str(sskills))
-    def fig_wd(wordcloud):
-        fig = plt.imshow(wordcloud)
-        fig =plt.axis("off")
-        return fig
-    fig = fig_wd(wordcloud_ss)
-    st.pyplot(fig=plt)

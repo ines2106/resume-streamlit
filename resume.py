@@ -29,10 +29,7 @@ with open(css_file) as f:
 
 
 
-st.sidebar.info(
-    """
-    If you are looking for a curious and enthusiast data analyst, don't hesitate to 
-    [email](mailto:ines.mebarki@essec.edu) me or reach out on [LinkedIn](https://www.linkedin.com/in/inès-mebarki/)""")
+#st.sidebar.info("""If you are looking for a curious and enthusiast data analyst, don't hesitate to [email](mailto:ines.mebarki@essec.edu) me or reach out on [LinkedIn](https://www.linkedin.com/in/inès-mebarki/)""")
 
 
 

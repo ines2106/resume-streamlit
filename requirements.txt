@@ -3,4 +3,4 @@ pandas==1.5.3
 Pillow==9.4.0
 plotly==5.13.0
 streamlit==1.17.0
-wordcloud==1.8.1
+wordcloud==1.8.2.2
